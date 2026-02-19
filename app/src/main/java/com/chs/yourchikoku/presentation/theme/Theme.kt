@@ -1,6 +1,5 @@
-package com.chs.yourchikoku.ui.theme
+package com.chs.yourchikoku.presentation.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

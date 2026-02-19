@@ -1,4 +1,4 @@
-package com.chs.yourchikoku.ui.theme
+package com.chs.yourchikoku.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -2,7 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
+
     <application
+        android:name=".YourChikokuApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -12,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.YourChikoku">
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.YourChikoku">
@@ -22,6 +27,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".presentation.ActivityTransitionReceiver"
+            android:exported="false"
+            android:permission="com.google.android.gms.permission.ACTIVITY_RECOGNITION">
+            <intent-filter>
+                <action android:name="action.TRANSITIONS_DATA" />
+            </intent-filter>
+
+        </receiver>
     </application>
 
 </manifest>
