@@ -3,6 +3,16 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.room)
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
+}
+
+ksp {
+    arg("KOIN_CONFIG_CHECK","true")
+    arg("KOIN_DEFAULT_MODULE","true")
 }
 
 android {
@@ -49,4 +59,5 @@ dependencies {
     implementation(libs.lottie)
     implementation(libs.gms.location)
     ksp(libs.koin.ksp)
+    ksp(libs.androidX.room.compiler)
 }
