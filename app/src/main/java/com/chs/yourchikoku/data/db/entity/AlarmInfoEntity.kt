@@ -6,9 +6,10 @@ import androidx.room.Entity
     tableName = "alarm_infos"
 )
 data class AlarmInfoEntity(
-    val createTime: Long,
+    val createTime: Long = System.currentTimeMillis(),
     val title: String,
     val targetAlarmDate: Long? = null,
+    val repeatAlarmDateList: String,
     val alarmTime: Long,
     val isAvoidHoliday: Boolean
 )
