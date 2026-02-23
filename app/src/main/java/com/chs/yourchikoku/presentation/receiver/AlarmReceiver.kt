@@ -1,4 +1,4 @@
-package com.chs.yourchikoku.presentation
+package com.chs.yourchikoku.presentation.receiver
 
 import android.app.NotificationManager
 import android.content.BroadcastReceiver

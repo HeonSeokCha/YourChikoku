@@ -31,7 +31,7 @@
         </activity>
 
         <receiver
-            android:name=".presentation.ActivityTransitionReceiver"
+            android:name=".presentation.receiver.ActivityTransitionReceiver"
             android:exported="false"
             android:permission="com.google.android.gms.permission.ACTIVITY_RECOGNITION">
             <intent-filter>

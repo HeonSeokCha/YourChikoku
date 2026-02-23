@@ -11,7 +11,8 @@ fun AlarmInfo.toAlarmInfoEntity(): AlarmInfoEntity {
         alarmTime = this.alarmTime.toNanoOfDay(),
         targetAlarmDate = this.alarmTargetDate?.toMillis(),
         isAvoidHoliday = this.isAvoidHoliday,
-        repeatAlarmDateList = this.alarmRepeatDateIdx.toString()
+        repeatAlarmDateList = this.alarmRepeatDateIdx.toString(),
+        isEnabled = this.isEnabled
     )
 }
 
@@ -21,6 +22,7 @@ fun AlarmInfoEntity.toAlarmInfo(): AlarmInfo {
         alarmRepeatDateIdx = this.repeatAlarmDateList.split(",").map { it.toInt() },
         alarmTargetDate = this.targetAlarmDate?.toLocalDate(),
         alarmTime = LocalTime.ofNanoOfDay(this.alarmTime),
-        isAvoidHoliday = this.isAvoidHoliday
+        isAvoidHoliday = this.isAvoidHoliday,
+        isEnabled = this.isEnabled
     )
 }
