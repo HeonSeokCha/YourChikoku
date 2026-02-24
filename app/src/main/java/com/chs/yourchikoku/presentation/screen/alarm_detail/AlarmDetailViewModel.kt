@@ -10,4 +10,5 @@ class AlarmDetailViewModel(
     private val upsertAlarmInfoUseCase: UpsertAlarmInfoUseCase,
     private val deleteAlarmInfoUseCase: DeleteAlarmInfoUseCase
 ) : ViewModel() {
+
 }
