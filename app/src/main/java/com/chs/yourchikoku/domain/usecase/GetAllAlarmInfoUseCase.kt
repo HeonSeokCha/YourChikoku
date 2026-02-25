@@ -2,12 +2,11 @@ package com.chs.yourchikoku.domain.usecase
 
 import com.chs.yourchikoku.domain.model.AlarmInfo
 import com.chs.yourchikoku.domain.repository.AlarmRepository
-import kotlinx.coroutines.flow.Flow
 import org.koin.core.annotation.Single
 
 @Single
-class GetAlarmInfoUseCase(
+class GetAllAlarmInfoUseCase(
     private val repository: AlarmRepository
 ) {
-    operator fun invoke(alarmId: Int): Flow<List<AlarmInfo>> = repository.getAllAlarmInfo()
+    suspend operator fun invoke(alarmId: Int): AlarmInfo = repository.getAlarmInfo(alarmId)
 }

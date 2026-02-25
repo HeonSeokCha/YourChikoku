@@ -17,8 +17,14 @@ class AlarmRepositoryImpl(
         return alarmInfoDao.getAllAlarm().map { it.map { it.toAlarmInfo() } }
     }
 
-    override suspend fun upsertAlarmInfo(info: AlarmInfo) {
-        alarmInfoDao.upsertEntity(info.toAlarmInfoEntity())
+    override suspend fun getAlarmInfo(alarmId: Int): AlarmInfo {
+        return alarmInfoDao.getAlarm(alarmId).toAlarmInfo()
+    }
+
+    override suspend fun upsertAlarmInfo(vararg info: AlarmInfo) {
+        alarmInfoDao.upsertEntity(
+            *info.map { it.toAlarmInfoEntity() }.toTypedArray()
+        )
     }
 
     override suspend fun deleteAlarmInfo(vararg info: AlarmInfo) {

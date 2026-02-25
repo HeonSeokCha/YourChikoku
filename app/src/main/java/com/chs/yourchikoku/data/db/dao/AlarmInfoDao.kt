@@ -9,4 +9,7 @@ import kotlinx.coroutines.flow.Flow
 abstract class AlarmInfoDao : BaseDao<AlarmInfoEntity> {
     @Query("SELECT * FROM alarm_infos order by createTime")
     abstract fun getAllAlarm(): Flow<List<AlarmInfoEntity>>
+
+    @Query("SELECT * FROm alarm_infos WHERE alarmId = :alarmId")
+    abstract suspend fun getAlarm(alarmId: Int): AlarmInfoEntity
 }
