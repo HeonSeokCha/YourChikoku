@@ -6,6 +6,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.chs.yourchikoku.domain.model.AlarmInfo
 import com.chs.yourchikoku.domain.usecase.DeleteAlarmInfoUseCase
 import com.chs.yourchikoku.domain.usecase.GetAlarmInfoUseCase
+import com.chs.yourchikoku.domain.usecase.GetAllAlarmInfoUseCase
 import com.chs.yourchikoku.domain.usecase.UpsertAlarmInfoUseCase
 import com.chs.yourchikoku.presentation.screen.home_screen.HomeEffect.*
 import kotlinx.coroutines.channels.Channel
@@ -22,7 +23,7 @@ import org.koin.android.annotation.KoinViewModel
 
 @KoinViewModel
 class HomeViewModel(
-    private val getAlarmInfoUseCase: GetAlarmInfoUseCase,
+    private val getAlarmInfoUseCase: GetAllAlarmInfoUseCase,
     private val upsertAlarmInfoUseCase: UpsertAlarmInfoUseCase,
     private val deleteAlarmInfoUseCase: DeleteAlarmInfoUseCase
 ) : ViewModel() {

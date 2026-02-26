@@ -11,4 +11,7 @@ sealed interface YourChikokuScreens : NavKey {
 
     @Serializable
     data class AlarmDetailScreen(val alarmId: Int) : YourChikokuScreens
+
+    @Serializable
+    data class StepAlarmScreen(val alarmId: Int) : YourChikokuScreens
 }

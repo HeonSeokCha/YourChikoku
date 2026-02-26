@@ -7,6 +7,7 @@ import java.time.LocalTime
 
 fun AlarmInfo.toAlarmInfoEntity(): AlarmInfoEntity {
     return AlarmInfoEntity(
+        alarmId = this.alarmId,
         title = this.title,
         alarmTime = this.alarmTime.toNanoOfDay(),
         targetAlarmDate = this.alarmTargetDate?.toMillis(),
@@ -18,6 +19,7 @@ fun AlarmInfo.toAlarmInfoEntity(): AlarmInfoEntity {
 
 fun AlarmInfoEntity.toAlarmInfo(): AlarmInfo {
     return AlarmInfo(
+        alarmId = this.alarmId,
         title = this.title,
         alarmRepeatDateIdx = this.repeatAlarmDateList.split(",").map { it.toInt() },
         alarmTargetDate = this.targetAlarmDate?.toLocalDate(),

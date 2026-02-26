@@ -30,7 +30,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.chs.yourchikoku.presentation.theme.YourChikokuTheme
 
 @Composable
 fun StepAlarmScreenRoot(
@@ -41,12 +43,11 @@ fun StepAlarmScreenRoot(
 
 @Composable
 private fun StepCountAlarmScreen(
-    currentSteps: Int,
-    targetSteps: Int,
+    state: StepAlarmState,
     onAlarmStop: () -> Unit
 ) {
     val progress by animateFloatAsState(
-        targetValue = currentSteps.toFloat() / targetSteps,
+        targetValue = state.currentStep.toFloat() / state.targetStep,
         animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec
     )
     ElevatedCard(
@@ -74,13 +75,13 @@ private fun StepCountAlarmScreen(
 
             Row(verticalAlignment = Alignment.Bottom) {
                 Text(
-                    text = currentSteps.toString(),
+                    text = state.currentStep.toString(),
                     style = MaterialTheme.typography.displayLarge.copy(
                         fontWeight = FontWeight.Bold
                     )
                 )
                 Text(
-                    text = " / $targetSteps",
+                    text = " / ${state.targetStep}",
                     style = MaterialTheme.typography.headlineSmall,
                     modifier = Modifier.padding(bottom = 12.dp, start = 4.dp),
                     color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -101,7 +102,7 @@ private fun StepCountAlarmScreen(
             )
 
             AnimatedVisibility(
-                visible = currentSteps >= targetSteps,
+                visible = state.currentStep >= state.targetStep,
                 enter = fadeIn() + expandVertically()
             ) {
                 Button(
@@ -116,5 +117,18 @@ private fun StepCountAlarmScreen(
                 }
             }
         }
+    }
+}
+
+@Preview
+@Composable
+fun PreviewStepAlarmScreen() {
+    YourChikokuTheme {
+        StepCountAlarmScreen(
+            state = StepAlarmState(
+                currentStep = 35,
+                targetStep = 50
+            )
+        ) { }
     }
 }

@@ -8,9 +8,14 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
+import com.chs.yourchikoku.presentation.screen.alarm_detail.AlarmDetailScreenRoot
+import com.chs.yourchikoku.presentation.screen.alarm_detail.AlarmDetailViewModel
 import com.chs.yourchikoku.presentation.screen.home_screen.HomeScreenRoot
 import com.chs.yourchikoku.presentation.screen.home_screen.HomeViewModel
+import com.chs.yourchikoku.presentation.screen.step_alarm.StepAlarmScreenRoot
+import com.chs.yourchikoku.presentation.screen.step_alarm.StepAlarmViewModel
 import org.koin.androidx.compose.koinViewModel
+import org.koin.core.parameter.parametersOf
 
 @Composable
 fun MainNavDisplay(
@@ -37,8 +42,17 @@ fun MainNavDisplay(
                 )
             }
 
-            entry<YourChikokuScreens.AlarmDetailScreen> {
+            entry<YourChikokuScreens.AlarmDetailScreen> { key ->
+                val viewModel = koinViewModel<AlarmDetailViewModel> {
+                    parametersOf(key.alarmId)
+                }
+                AlarmDetailScreenRoot(viewModel)
+            }
 
+            entry<YourChikokuScreens.StepAlarmScreen> {
+                val viewModel: StepAlarmViewModel = koinViewModel()
+
+                StepAlarmScreenRoot()
             }
         }
     )
